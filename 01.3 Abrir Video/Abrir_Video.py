@@ -8,7 +8,7 @@ caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Road 
 mostraVideo = cv2.VideoCapture(caminhoImagem)
 
 #Guarda os frames por segundo do vídeo
-fps = mostraVideo.get(cv2.CAP_PROP_FPS)
+fps = int(1000 / mostraVideo.get(cv2.CAP_PROP_FPS))
 
 cv2.namedWindow('Abrir Vídeo', cv2.WINDOW_GUI_EXPANDED )
 
@@ -20,8 +20,8 @@ while mostraVideo.isOpened():
     cv2.imshow('Abrir Vídeo', frame)
 
     # press 'Q' if you want to exit
-    if cv2.waitKey(int(fps)) == ord('q'):
+    if cv2.waitKey(fps) == ord('q'):
         break
 
-cv2.destroyWindow()
+cv2.destroyAllWindows()
 mostraVideo.release()
