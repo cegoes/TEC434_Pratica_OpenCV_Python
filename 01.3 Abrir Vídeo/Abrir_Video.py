@@ -20,8 +20,8 @@ while mostraVideo.isOpened():
     cv2.imshow('Abrir Vídeo', frame)
 
     # press 'Q' if you want to exit
-    if cv2.waitKey(int(fps)) & 0xFF == ord('q'):
+    if cv2.waitKey(int(fps)) == ord('q'):
         break
 
-cv2.destroyWindow('Abrir Vídeo')
+cv2.destroyWindow()
 mostraVideo.release()
