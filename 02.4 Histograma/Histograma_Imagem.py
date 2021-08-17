@@ -1,4 +1,3 @@
-import numpy as np
 import cv2
 from matplotlib import pyplot as plt
 import sys
@@ -28,9 +27,7 @@ plt.subplot(245, title = 'Histograma alto c.'), plt.plot(histAlto)
 plt.subplot(246, title = 'Histograma baixo c.'), plt.plot(histBaixo)
 plt.subplot(247, title = 'Histograma imagem c.'), plt.plot(histClara)
 plt.subplot(248, title = 'Histograma imagem e.'), plt.plot(histEscura)
-plt.xlim([0,256])
 plt.show()
-
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
