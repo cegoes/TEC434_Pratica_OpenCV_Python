@@ -12,7 +12,9 @@ cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', image)
 
 # Apply identity kernel
-kernel1 = np.array([[-1, -1, -1],[-1, 8, -1],[-1, -1, -1]])
+kernel1 = np.array([[-1, -1, -1], 
+                    [-1,  8, -1], 
+                    [-1, -1, -1]])
 passaalta1 = cv2.filter2D(image,ddepth=None,kernel=kernel1)
 highboost1 = cv2.add(image,passaalta1)
 
@@ -20,7 +22,9 @@ cv2.namedWindow('Imagem filtro high boost (a)', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem filtro high boost (a)', highboost1)
 
 # Apply identity kernel
-kernel2 = np.array([[0, -1, 0],[-1, 4, -1],[0, -1, 0]])
+kernel2 = np.array([[0, -1, 0],
+                    [-1, 4, -1],
+                    [0, -1, 0]])
 passaalta2 = cv2.filter2D(image,ddepth=None,kernel=kernel2)
 highboost2 = cv2.add(image,passaalta2)
 

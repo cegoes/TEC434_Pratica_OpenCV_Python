@@ -12,7 +12,9 @@ cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', image)
 
 # Apply identity kernel
-kernel1 = np.array([[-1, -1, -1],[-1, 8, -1],[-1, -1, -1]])
+kernel1 = np.array([[-1, -1, -1],
+                    [-1,  8, -1],
+                    [-1, -1, -1]])
 
 passaalta = cv2.filter2D(image,ddepth=None,kernel=kernel1)
 

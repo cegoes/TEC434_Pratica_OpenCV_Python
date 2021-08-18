@@ -1,5 +1,4 @@
 import cv2
-import numpy
 import sys
 from pathlib import Path
 
@@ -15,6 +14,11 @@ cv2.imshow('Imagem original', imagem)
 filtromediana = cv2.medianBlur(imagem,3)
 cv2.namedWindow('Imagem filtro mediana', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem filtro mediana', filtromediana)
+
+#Filtro da media
+filtromedia = cv2.blur(imagem, (3,3))
+cv2.namedWindow('Imagem filtro media', cv2.WINDOW_GUI_EXPANDED)
+cv2.imshow('Imagem filtro media', filtromedia)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
