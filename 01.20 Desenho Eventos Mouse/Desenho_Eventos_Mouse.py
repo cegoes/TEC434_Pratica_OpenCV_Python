@@ -9,7 +9,6 @@ imagem = cv2.imread(caminhoImagem)
 
 # This is the mouse callback function:
 def draw_circle(event, x, y, flags, param):
-
     if event == cv2.EVENT_LBUTTONDBLCLK:
         print("event: EVENT_LBUTTONDBLCLK")
         cv2.circle(imagem, (x, y), 10, (0,0,255), 2)
@@ -21,14 +20,9 @@ def draw_circle(event, x, y, flags, param):
         print("event: EVENT_LBUTTONDOWN")
     cv2.imshow('Imagem carregada', imagem)
         
-
-
 # We create a named window where the mouse callback will be established
 cv2.namedWindow('Imagem carregada')
-
 cv2.setMouseCallback('Imagem carregada', draw_circle)
 
-
-
 cv2.waitKey(0)
-
+cv2.destroyAllWindows()
