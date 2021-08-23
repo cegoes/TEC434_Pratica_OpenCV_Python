@@ -18,7 +18,9 @@ player.queue(sound)
 player.play()
 
 #  Create a VideoCapture object and open the input file
-cameraCapture = cv2.VideoCapture(filename + 'Input.mp4')
+videoPlayer = cv2.VideoCapture(filename + 'Input.mp4')
+videoPlayer.set(3,640)
+videoPlayer.set(4,480)
 
 # Declarar as variáveis fora do looping faz a execução ser mais rápida!
 background = np.array
@@ -31,13 +33,13 @@ mascara = np.array
 final_output = np.array
 kernel = np.ones((3,3),np.uint8)
 
-sucess, frame = cameraCapture.read()
+sucess, frame = videoPlayer.read()
 
 while (sucess):
     print ('Camera inicializada...')
     print ('Capturando o background...')
     for i in range(60):
-        sucess, frame = cameraCapture.read()
+        sucess, frame = videoPlayer.read()
         background = frame
     print ('Imagem do background capturada...')
     break
@@ -52,15 +54,15 @@ high_red1 = np.array([10, 255, 255])
 low_red2 = np.array([170, 120, 70])
 high_red2 = np.array([180, 255, 255])
 
-# Frames por segundo divididos por 1000 milisegundos
-tempoFrame =  1 / (cameraCapture.get(cv2.CAP_PROP_FPS))
+# Segundo dividido pela quantidade de Frames
+tempoFrame =  1 / (videoPlayer.get(cv2.CAP_PROP_FPS))
 
 espera = 0
 tecla = 0
 
 while sucess and tecla != 27:
     tempoinicio = cv2.getTickCount()
-    sucess, frame = cameraCapture.read()    
+    sucess, frame = videoPlayer.read()    
 
     if (sucess == False):
         break
@@ -101,7 +103,7 @@ while sucess and tecla != 27:
     tecla = cv2.waitKey(espera)
 
 # When everything done, release the video capture object
-cameraCapture.release()
+videoPlayer.release()
 
 # Closes all the frames
 cv2.destroyAllWindows()
