@@ -21,7 +21,7 @@ print('FPS   : ' + str(fps))
 
 tamanho = (frame_width, frame_height)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-videoGravar = cv2.VideoWriter(caminhoVideo + 'GravarWebCam.avi', fourcc, 20, (int(frame_width),  int(frame_height)), True)
+videoGravar = cv2.VideoWriter(caminhoVideo + 'GravarWebCam.avi', fourcc, fps, (int(frame_width),  int(frame_height)), True)
 
 while cameraCapture.isOpened() and cv2.waitKey(1) == -1:
     sucess, frame = cameraCapture.read()    

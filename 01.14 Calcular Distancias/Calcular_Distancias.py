@@ -6,12 +6,12 @@ from pathlib import Path
 path = Path(sys.path[0])
 caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\brown-eyes.jpg'
 
-a = (148 , 127)
+a = (148, 127)
 b = (469, 126)
 
 imagem = cv2.imread(caminhoImagem)
 
-cv2.line(imagem, a, b, (0,255,2255), 2)
+cv2.line(imagem, a, b, (0,255,255), 2)
 
 cv2.imshow('Imagem', imagem)
 

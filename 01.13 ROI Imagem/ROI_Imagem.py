@@ -11,6 +11,7 @@ imagem = cv2.imread(caminhoImagem)
 imagemROI = imagem[98:194, 106:185]
 
 cv2.imshow('Imagem carregada', imagem)
+
 cv2.imshow('Imagem ROI', imagemROI)
 
 cv2.waitKey(0)
