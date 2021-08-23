@@ -11,10 +11,10 @@ filename = ".\\Anexos, Imagens e Videos\\Harry_Potter_Theme_Song_Hedwigs_Theme.m
 
 # create a player and queue the song
 player = pyglet.media.Player()
+player.loop = True
 sound = pyglet.media.load(filename)
 player.queue(sound)
 # keep playing for as long as the app is running (or you tell it to stop):
-player.eos_action = pyglet.media.SourceGroup.loop
 player.play()
 
 #  Create a VideoCapture object and open the input file
@@ -56,7 +56,7 @@ while sucess and cv2.waitKey(1) != 27:
 
     # Vermelho
     # mask1 = cv2.inRange(hsv, low_red1, high_red1)
-    # mask1 = cv2.inRange(hsv, low_red2, high_red2)
+    # mask2 = cv2.inRange(hsv, low_red2, high_red2)
     # mask1 = mask1 + mask2
 
     # Azul
