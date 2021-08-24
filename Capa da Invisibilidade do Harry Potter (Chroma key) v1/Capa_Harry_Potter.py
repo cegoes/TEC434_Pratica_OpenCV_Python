@@ -19,8 +19,6 @@ player.play()
 
 #  Create a VideoCapture object and open the input file
 videoPlayer = cv2.VideoCapture(filename + 'Input.mp4')
-videoPlayer.set(3,640)
-videoPlayer.set(4,480)
 
 # Declarar as variáveis fora do looping faz a execução ser mais rápida!
 background = np.array
