@@ -7,10 +7,10 @@ caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\pecas
 
 imagem = cv2.imread(caminhoImagem)
 
-imagemtexto = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
+imagemcinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
 
 cv2.imshow('Imagem carregada', imagem)
-cv2.imshow('Imagem em tons de cinza', imagemtexto)
+cv2.imshow('Imagem em tons de cinza', imagemcinza)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
