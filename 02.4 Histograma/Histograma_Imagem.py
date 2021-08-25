@@ -15,10 +15,10 @@ for n in range(0,len(nomeJanelas)):
 
 # Calculate histogram with mask and without mask
 # Check third argument for mask
-histAlto =   cv2.calcHist(imagem[0],[0],None,[256],[0,256])
-histBaixo =  cv2.calcHist(imagem[1],[0],None,[256],[0,256])
-histClara =  cv2.calcHist(imagem[2],[0],None,[256],[0,256])
-histEscura = cv2.calcHist(imagem[3],[0],None,[256],[0,256])
+histAlto =   cv2.calcHist(imagem[0],[0],None,[256],[0,255])
+histBaixo =  cv2.calcHist(imagem[1],[0],None,[256],[0,255])
+histClara =  cv2.calcHist(imagem[2],[0],None,[256],[0,255])
+histEscura = cv2.calcHist(imagem[3],[0],None,[256],[0,255])
 plt.subplot(241, title = 'Alto contraste'), plt.imshow(imagem[0], 'gray')
 plt.subplot(242, title = 'Baixo contraste'), plt.imshow(imagem[1], 'gray')
 plt.subplot(243, title = 'Imagem clara'), plt.imshow(imagem[2], 'gray')
