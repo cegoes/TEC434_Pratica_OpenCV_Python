@@ -1,7 +1,10 @@
 import cv2
 import numpy as np
+import sys
+from pathlib import Path
 
-caminhoImagem = '.\\Anexos, Imagens e Videos\\regionfilling.png'
+path = Path(sys.path[0])
+caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\regionfilling.png'
 
 #Carrega a imagem
 src = cv2.imread(caminhoImagem, cv2.IMREAD_GRAYSCALE)
