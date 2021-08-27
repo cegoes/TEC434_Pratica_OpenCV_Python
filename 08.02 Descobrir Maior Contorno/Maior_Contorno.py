@@ -31,7 +31,7 @@ color = (255,255,255)
 
 # Desenha o contorno e retângulo
 cv.drawContours( src, contours, largest_contour_index, color, cv.FILLED, 8)
-cv.rectangle(src, bounding_rect,  (0,255,0), 2, 8, 0)
+cv.rectangle(src, bounding_rect,  (0,0,255), 2, 8, 0)
 cv.namedWindow( "Display window", cv.WINDOW_AUTOSIZE )
 cv.imshow( "Display window", src )
 cv.waitKey(0)
