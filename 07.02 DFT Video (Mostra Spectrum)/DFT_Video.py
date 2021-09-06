@@ -26,7 +26,7 @@ def main():
             cv.add(matOfOnes, magI, magI) #  switch to logarithmic scale
             cv.log(magI, magI)
             
-            magI_rows, magI_cols = magI.shape
+            magI_rows, magI_cols = magI.shape[:2]
             # crop the spectrum, if it has an odd number of rows or columns
             magI = magI[0:(magI_rows & -2), 0:(magI_cols & -2)]
             cx = int(magI_rows/2)
@@ -46,6 +46,7 @@ def main():
             
             cv.imshow("Input Image"       , I   )    # Show the result
             cv.imshow("spectrum magnitude", magI)
+    vcap.release()
 
 if __name__ == "__main__":
     main()

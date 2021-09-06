@@ -54,7 +54,7 @@ def main(filename):
     
     cv.normalize(magI, magI, 0, 1, cv.NORM_MINMAX) # Transform the matrix with float values into a
     
-    cv.imshow("Input Image"       , I   )    # Show the result
+    cv.imshow("Input Image"       , I)    # Show the result
     cv.imshow("spectrum magnitude", magI)
     cv.waitKey()
 
