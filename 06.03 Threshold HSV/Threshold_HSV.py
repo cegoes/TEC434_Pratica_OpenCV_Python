@@ -7,7 +7,7 @@ caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
 frame_HSV = None
 
 max_value = 255
-max_value_H = 360//2
+max_value_H = 360 // 2
 low_H = 0
 low_S = 0
 low_V = 0
