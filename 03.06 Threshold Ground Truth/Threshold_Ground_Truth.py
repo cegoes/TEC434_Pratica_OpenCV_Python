@@ -6,13 +6,12 @@ from pathlib import Path
 path = Path(sys.path[0])
 caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Ground_Truth\\'
 
-def FillHoles(src):
-    contours,hierarchy = cv.findContours(src,cv.RETR_CCOMP,cv.CHAIN_APPROX_SIMPLE)
-    color = 255
+def fillHoles(src):
+    contours,hierarchy = cv.findContours(src, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
     dst = np.zeros(src.shape, np.uint8)
-
+    color = 255
     for i in range(len(contours)):
-        cv.drawContours(dst,contours,i,color,-1,8,hierarchy,0)
+        cv.drawContours(dst, contours,i, color, -1, 8, hierarchy, 0)
     return dst
 
 def main():
@@ -35,7 +34,7 @@ def main():
     npThreshold = cv.adaptiveThreshold(npSuavizacao,  255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY_INV, 15, 3)
     npMorfologia = cv.morphologyEx(npThreshold,cv.MORPH_CLOSE, cv.getStructuringElement( cv.MORPH_ELLIPSE, ( 11, 11 ) ))
 
-    image_result = FillHoles(npMorfologia)
+    image_result = fillHoles(npMorfologia)
 
     cv.imshow(strResult, image_result)
 
