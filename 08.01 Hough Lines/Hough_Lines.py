@@ -16,7 +16,7 @@ def onTrackbarChange(max_slider):
 	th1 = max_slider 
 	th2 = th1 * 0.4
 	edges = cv2.Canny(img, th1, th2)
-	
+
 	# Apply probabilistic hough line transform
 	lines = cv2.HoughLinesP(edges, 2, np.pi/180.0, 50, minLineLength=10, maxLineGap=100)
 
@@ -27,8 +27,6 @@ def onTrackbarChange(max_slider):
 
 	cv2.imshow("Result Image", dst)	
 	cv2.imshow("Edges",edges)
-
-
 
 if __name__ == "__main__":
 	
@@ -45,7 +43,6 @@ if __name__ == "__main__":
 	cv2.namedWindow("Edges")
 	cv2.namedWindow("Result Image")
 	  
-
 	# Initialize threshold value
 	initThresh = 500
 

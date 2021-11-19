@@ -27,7 +27,7 @@ for i in range(len(contours)):
         # Descobre o retângulo delimitador de cada contorno
         bounding_rect = cv.boundingRect(contours[i])
 
-color = (255,255,255)
+color = (255,0,255)
 
 # Desenha o contorno e retângulo
 cv.drawContours( src, contours, largest_contour_index, color, cv.FILLED, 8)
