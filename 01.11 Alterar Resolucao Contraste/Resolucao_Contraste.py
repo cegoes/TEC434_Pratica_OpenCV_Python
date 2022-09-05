@@ -3,10 +3,10 @@ import sys
 from pathlib import Path
 
 path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_gray.png'
+caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
 print (caminhoImagem)
 
-imagem256 = cv2.imread(caminhoImagem)
+imagem256 = cv2.imread(caminhoImagem, 0)
 
 cv2.namedWindow("256 Tons", cv2.WINDOW_AUTOSIZE)
 cv2.normalize(imagem256, imagem256, 0, 255, cv2.NORM_MINMAX )

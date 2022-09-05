@@ -1,31 +1,47 @@
 import cv2 as cv
+import numpy as np
 from matplotlib import pyplot as plt
 import sys
 from pathlib import Path
-
-
 
 path = Path(sys.path[0])
 caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Fig1041(a)(septagon_small_noisy_mean_0_stdv_10).tif'
 
 img = cv.imread(caminhoImagem, 0)
-# Otsu's thresholding
-ret2,th1 = cv.threshold(img, 0, 255, cv.THRESH_BINARY+cv.THRESH_OTSU)
-# Otsu's thresholding after Gaussian filtering
+
+# Otsu's thresholding no filtering 
+ret,th1 = cv.threshold(img, 0, 255, cv.THRESH_BINARY+cv.THRESH_OTSU)
+
+# Otsu's thresholding after Blur filtering
 blur = cv.blur(img,(5,5))
-ret2,th2 = cv.threshold(blur, 0, 255,cv.THRESH_BINARY+cv.THRESH_OTSU)
+ret,th2 = cv.threshold(blur, 0, 255,cv.THRESH_BINARY+cv.THRESH_OTSU)
+
+# teste ...
+sobelx = cv.Sobel(src=img, ddepth=cv.CV_64F, dx=1, dy=0) 
+sobely = cv.Sobel(src=img, ddepth=cv.CV_64F, dx=0, dy=1)
+# compute the gradient magnitude and orientation
+magnitude = np.sqrt((sobelx ** 2) + (sobely ** 2))
+#filtered_image = np.where(magnitude > np.percentile(magnitude, 99.7), magnitude, 0)
+filtered_image = np.percentile(magnitude, 99.7)
+produto = cv.multiply (img, filtered_image,dtype=cv.CV_8U)
+
+ret,th3 = cv.threshold(produto, 0, 255,cv.THRESH_BINARY+cv.THRESH_OTSU)
+
 # plot all the images and their histograms
-
-lblur = cv.Laplacian(blur, cv.CV_8U, ksize=5)
-
 images = [img,  0, th1,
           blur, 0, th2,
-          lblur, 0, th2,
-          blur, 0, th2]
-titles = ['Original Noisy Image','Histogram',"Otsu's Thresholding",
-          'Blured Noisy Image','Histogram',"Otsu's Thresholding",
-          'Original Noisy Image','Histogram',"Otsu's Thresholding",
-          'Gaussian filtered Image','Histogram',"Otsu's Thresholding"]
+          magnitude, 0, filtered_image,
+          produto, 0, th3]
+
+cv.imwrite('teste2.png',produto)
+
+titles = ['Original Noisy Image(a)','Histogram(b)',"Otsu's Thresholding(c)",
+          'Blured Noisy Image(d)','Histogram(e)',"Otsu's Thresholding(f)",
+          'Magnitude Gradiente 99.7 da imagem a(g)','Histogram',"Otsu's Thresholding",
+          'a Multiply by g(j)','Histogram',"Otsu's Thresholding"]
+
+plt.rcParams.update({'axes.titlesize': 6})
+
 for i in range(4):
     plt.subplot(4,3,i*3+1),plt.imshow(images[i*3],'gray')
     plt.title(titles[i*3]), plt.xticks([]), plt.yticks([])

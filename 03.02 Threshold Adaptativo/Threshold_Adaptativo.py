@@ -19,7 +19,7 @@ if __name__ == '__main__':
     @param blockSize Size of a pixel neighborhood that is used to calculate a threshold value for the pixel: 3, 5, 7, and so on.
     @param C Constant subtracted from the mean or weighted mean (see the details below). Normally, it is positive but may be zero or negative as well.
     '''
-    thresholdadap = cv.adaptiveThreshold(image, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 15, -3)
+    thresholdadap = cv.adaptiveThreshold(image, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 45, -3)
     cv.namedWindow('Resultado threshold adaptativo')
     cv.imshow('Resultado threshold adaptativo', thresholdadap)
     _, thresholdnormal = cv.threshold(image, 25, 255, cv.THRESH_BINARY)

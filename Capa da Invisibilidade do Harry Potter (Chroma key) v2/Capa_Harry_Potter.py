@@ -37,14 +37,14 @@ cv2.namedWindow("Capa da Invisibilidade.", cv2.WINDOW_FREERATIO)
 
 kernel = np.ones((3,3),np.uint8)
 
-low_blue = np.array([94, 80, 2])
-high_blue = np.array([126, 255, 255])
-# low_green = np.array([36, 45, 0])
-# high_green = np.array([86, 250, 255])
-# low_red1 = np.array([0, 120, 70])
-# high_red1 = np.array([10, 255, 255])
-# low_red2 = np.array([170, 120, 70])
-# high_red2 = np.array([180, 255, 255])
+#low_blue = np.array([94, 80, 2])
+#high_blue = np.array([126, 255, 255])
+#low_green = np.array([36, 45, 0])
+#high_green = np.array([86, 250, 255])
+low_red1 = np.array([0, 120, 70])
+high_red1 = np.array([10, 255, 255])
+low_red2 = np.array([170, 120, 70])
+high_red2 = np.array([180, 255, 255])
 
 while sucess and cv2.waitKey(1) != 27:
     sucess, frame = cameraCapture.read()    
@@ -55,12 +55,12 @@ while sucess and cv2.waitKey(1) != 27:
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     # Vermelho
-    # mask1 = cv2.inRange(hsv, low_red1, high_red1)
-    # mask2 = cv2.inRange(hsv, low_red2, high_red2)
-    # mask1 = mask1 + mask2
+    mask1 = cv2.inRange(hsv, low_red1, high_red1)
+    mask2 = cv2.inRange(hsv, low_red2, high_red2)
+    mask1 = mask1 + mask2
 
     # Azul
-    mask1 = cv2.inRange(hsv, low_blue, high_blue)
+    # mask1 = cv2.inRange(hsv, low_blue, high_blue)
 
     # Verde
     #mask1 = cv2.inRange(hsv, low_green, high_green)

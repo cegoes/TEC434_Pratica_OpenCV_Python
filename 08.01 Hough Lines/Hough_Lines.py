@@ -17,8 +17,17 @@ def onTrackbarChange(max_slider):
 	th2 = th1 * 0.4
 	edges = cv2.Canny(img, th1, th2)
 
-	# Apply probabilistic hough line transform
-	lines = cv2.HoughLinesP(edges, 2, np.pi/180.0, 50, minLineLength=10, maxLineGap=100)
+	# image	8-bit, single-channel binary source image. The image may be modified by the function.
+	# lines	Output vector of lines. Each line is represented by a 4-element vector (x1,y1,x2,y2) , where (x1,y1) and (x2,y2) are the ending points of each detected line segment.
+	# rho	Distance resolution of the accumulator in pixels.
+	# theta	Angle resolution of the accumulator in radians.
+	# threshold	Accumulator threshold parameter. Only those lines are returned that get enough votes ( >threshold ).
+	# minLineLength	Minimum line length. Line segments shorter than that are rejected.
+	# maxLineGap	Maximum allowed gap between points on the same line to link them.
+
+	# Aplicando a Transformada de Hough Probabilistica
+	lines = cv2.HoughLinesP(image=edges, rho=2, theta=np.pi/180.0, threshold=50, 
+		minLineLength=10, maxLineGap=100)
 
 	# Draw lines on the detected points
 	for line in lines:

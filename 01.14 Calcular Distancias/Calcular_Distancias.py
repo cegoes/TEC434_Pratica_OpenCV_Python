@@ -6,15 +6,18 @@ from pathlib import Path
 path = Path(sys.path[0])
 caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\brown-eyes.jpg'
 
+# Coordenadas em (colunas, linhas) a serem mensuradas
 a = (148, 127)
 b = (469, 126)
 
 imagem = cv2.imread(caminhoImagem)
 
+# Desenha uma linha entre as coordenadas
 cv2.line(imagem, a, b, (0,255,255), 2)
 
 cv2.imshow('Imagem', imagem)
 
+# Calcula as distâncias
 euclidiana = dist.euclidean(a, b)
 cityblock  = dist.cityblock(a, b)
 chessboard = dist.chebyshev(a, b)

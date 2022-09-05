@@ -14,7 +14,7 @@ cv2.imshow('Imagem Entrada', imagem)
 print(imagem[20,30])
 
 # Insere um pixel verde na posição (x,y) (20,30) da imagem
-imagem[20,30] = [0,255,0] # O opencv trabalha com a matriz de cores BGR(Blue,Green,Red) ao invés do RGB
+imagem[20,30] = [255,255,255] # O opencv trabalha com a matriz de cores BGR(Blue,Green,Red) ao invés do RGB
 
 # Mostra o novo valor do pixel da posição (x,y) (20,30) da imagem
 print(imagem[20,30])

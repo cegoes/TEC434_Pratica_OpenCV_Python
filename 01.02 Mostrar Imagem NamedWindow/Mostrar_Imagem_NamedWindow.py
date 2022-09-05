@@ -8,7 +8,7 @@ caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_s
 print(caminhoImagem)
 imagem = cv2.imread(caminhoImagem)
 
-cv2.namedWindow('Imagem carregada', cv2.WINDOW_GUI_NORMAL)
-cv2.imshow('Imagem carregada', imagem)
+cv2.namedWindow('Imagem carregadas', cv2.WINDOW_GUI_NORMAL)
+cv2.imshow('Imagem carregadas', imagem)
 
 cv2.waitKey(0)
