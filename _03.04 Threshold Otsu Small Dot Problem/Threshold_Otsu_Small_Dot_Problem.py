@@ -22,27 +22,30 @@ sobely = cv.Sobel(src=img, ddepth=cv.CV_64F, dx=0, dy=1)
 # compute the gradient magnitude and orientation
 magnitude = np.sqrt((sobelx ** 2) + (sobely ** 2))
 #filtered_image = np.where(magnitude > np.percentile(magnitude, 99.7), magnitude, 0)
-filtered_image = np.percentile(magnitude, 99.7)
-produto = cv.multiply (img, filtered_image,dtype=cv.CV_8U)
+limiar_percentil = np.percentile(magnitude, 99.7)
+ret,mascara = cv.threshold(magnitude,limiar_percentil,255,cv.THRESH_BINARY)
+
+print(mascara.shape)
+
+#produto = img * np.uint8(mascara)
+produto = cv.multiply(img, np.uint8(mascara))
+
+cv.imwrite('teste.png',produto)
 
 ret,th3 = cv.threshold(produto, 0, 255,cv.THRESH_BINARY+cv.THRESH_OTSU)
 
 # plot all the images and their histograms
 images = [img,  0, th1,
           blur, 0, th2,
-          magnitude, 0, filtered_image,
           produto, 0, th3]
-
-cv.imwrite('teste2.png',produto)
 
 titles = ['Original Noisy Image(a)','Histogram(b)',"Otsu's Thresholding(c)",
           'Blured Noisy Image(d)','Histogram(e)',"Otsu's Thresholding(f)",
-          'Magnitude Gradiente 99.7 da imagem a(g)','Histogram',"Otsu's Thresholding",
-          'a Multiply by g(j)','Histogram',"Otsu's Thresholding"]
+          'Magnitude Gradiente(g)','Histogram(h)',"Otsu's Thresholding(i)"]
 
 plt.rcParams.update({'axes.titlesize': 6})
 
-for i in range(4):
+for i in range(3):
     plt.subplot(4,3,i*3+1),plt.imshow(images[i*3],'gray')
     plt.title(titles[i*3]), plt.xticks([]), plt.yticks([])
     plt.subplot(4,3,i*3+2),plt.hist(images[i*3].ravel(),256)
