@@ -1,5 +1,6 @@
 import cv2 as cv
 import numpy as np
+from pathlib import Path
 
 def print_help():
     print('''
@@ -57,4 +58,5 @@ def main(filename):
     cv.waitKey()
 
 if __name__ == "__main__":
-    main('.\\Anexos, Imagens e Videos\\len_std.png')
+    caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
+    main(filename=str(caminhoImagem))

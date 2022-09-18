@@ -23,14 +23,13 @@ sobely = cv.Sobel(src=img, ddepth=cv.CV_64F, dx=0, dy=1)
 magnitude = np.sqrt((sobelx ** 2) + (sobely ** 2))
 #filtered_image = np.where(magnitude > np.percentile(magnitude, 99.7), magnitude, 0)
 limiar_percentil = np.percentile(magnitude, 99.7)
+print(limiar_percentil)
 ret,mascara = cv.threshold(magnitude,limiar_percentil,255,cv.THRESH_BINARY)
 
-print(mascara.shape)
-
 #produto = img * np.uint8(mascara)
-produto = cv.multiply(img, np.uint8(mascara))
+produto = np.array((img * mascara),np.uint8)
 
-cv.imwrite('teste.png',produto)
+cv.imwrite('teste1.png', produto)
 
 ret,th3 = cv.threshold(produto, 0, 255,cv.THRESH_BINARY+cv.THRESH_OTSU)
 

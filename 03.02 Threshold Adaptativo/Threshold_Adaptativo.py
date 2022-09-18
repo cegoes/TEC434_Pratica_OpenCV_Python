@@ -1,12 +1,10 @@
 import cv2 as cv
-import sys
 from pathlib import Path
 
 if __name__ == '__main__':
-    path = Path(sys.path[0])
-    caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\FiguraSombra.png'
+    caminhoImagem = Path('Anexos, Imagens e Videos/FiguraSombra.png')
 
-    image = cv.imread(caminhoImagem, 0)
+    image = cv.imread(str(caminhoImagem), 0)
     cv.namedWindow("Imagem original")
     cv.imshow("Imagem original", image)
     image = cv.blur(image,(3,3))

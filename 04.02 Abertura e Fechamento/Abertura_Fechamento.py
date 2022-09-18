@@ -1,8 +1,11 @@
 import cv2
+from pathlib import Path
+
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 # Carrega a imagem
-image1 = cv2.imread('.\\Anexos, Imagens e Videos\\exmorfologia1.png')
-image2 = cv2.imread('.\\Anexos, Imagens e Videos\\exmorfologia2.png')
+image1 = cv2.imread(str(caminhoImagem / 'exmorfologia1.png'))
+image2 = cv2.imread(str(caminhoImagem / 'exmorfologia2.png'))
 
 cv2.namedWindow("Imagem 1",cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow("Imagem 1",image1)

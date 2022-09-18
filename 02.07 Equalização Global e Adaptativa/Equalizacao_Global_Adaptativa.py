@@ -1,12 +1,10 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Fig0326(a)(embedded_square_noisy_512).tif'
+caminhoImagem = Path('Anexos, Imagens e Videos/Fig0326(a)(embedded_square_noisy_512).tif')
 
 # Carrega a imagem
-image = cv2.imread(caminhoImagem,0)
+image = cv2.imread(str(caminhoImagem),0)
 cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', image)
 

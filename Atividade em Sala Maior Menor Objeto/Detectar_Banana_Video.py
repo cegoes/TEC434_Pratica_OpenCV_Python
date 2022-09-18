@@ -1,14 +1,8 @@
 import cv2 as cv
-import sys
 from pathlib import Path
-import numpy as np
 
-from cv2 import blur
-
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
-
-mostraVideo = cv.VideoCapture(caminhoImagem + 'frutas.mp4')
+caminhoImagem = Path('Anexos, Imagens e Videos')
+mostraVideo = cv.VideoCapture(str(caminhoImagem / 'frutas.mp4'))
 
 #Guarda os frames por segundo do vídeo
 fps = int(1000 / mostraVideo.get(cv.CAP_PROP_FPS))
@@ -65,4 +59,4 @@ while mostraVideo.isOpened():
 
 mostraVideo.release()
 cv.destroyAllWindows()
-cv.waitKey(0)
+cv.waitKey()

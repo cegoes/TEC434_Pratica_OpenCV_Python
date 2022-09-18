@@ -1,12 +1,8 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\multiple-blob.png'
-
-print(caminhoImagem)
-img = cv2.imread(caminhoImagem)
+caminhoImagem = Path('Anexos, Imagens e Videos/multiple-blob.png')
+img = cv2.imread(str(caminhoImagem))
 
 # convert the image to grayscale
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -28,4 +24,4 @@ for c in contours:
 
    # display the image
    cv2.imshow("Image", img)
-cv2.waitKey(0)
+cv2.waitKey()

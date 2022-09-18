@@ -24,13 +24,11 @@ THE SOFTWARE.
 
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos/8ipeJ.jpg')
 
-large = cv2.imread(caminhoImagem + '8ipeJ.jpg')
+large = cv2.imread(str(caminhoImagem))
 rgb = cv2.pyrDown(large)
 small = cv2.cvtColor(rgb, cv2.COLOR_BGR2GRAY)
 
@@ -58,5 +56,5 @@ for idx in range(len(contours)):
         cv2.rectangle(rgb, (x, y), (x+w-1, y+h-1), (0, 255, 0), 2)
 
 cv2.imshow('rects', rgb)
-cv2.waitKey(0)
+cv2.waitKey()
 cv2.destroyAllWindows()

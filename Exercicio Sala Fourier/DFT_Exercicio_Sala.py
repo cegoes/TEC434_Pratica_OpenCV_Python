@@ -1,5 +1,8 @@
 import numpy as np
 import cv2 as cv
+from pathlib import Path
+
+caminhoImagem = Path('Anexos, Imagens e Videos/windmill_noise.png')
 
 def shift(magI):
     return np.fft.fftshift(magI)
@@ -20,7 +23,7 @@ def updateMag(complex):
     return magI
 
 # Step 1 read in the picture
-img = cv.imread('d://windmill_noise.png',0)
+img = cv.imread(str(caminhoImagem),0)
 
 img_float = np.float32(img)
 # Step 3: Fourier transform with cv.dft

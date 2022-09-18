@@ -1,12 +1,10 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\pecas_lego.jpg'
+caminhoImagem = Path('Anexos, Imagens e Videos/pecas_lego.jpg')
 
 # Carrega a imagem
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', image)
 

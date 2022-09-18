@@ -1,9 +1,11 @@
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+from pathlib import Path
+
+caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
 # Step 1 read in the picture
-img = cv2.imread('.\\Anexos, Imagens e Videos\\len_std.png',0)
+img = cv2.imread(str(caminhoImagem),0)
 
 img_float = np.float32(img)
 

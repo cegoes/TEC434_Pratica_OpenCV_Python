@@ -1,13 +1,11 @@
 import cv2
 import numpy
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\X_Wing.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/X_Wing.png')
 
 #Carrega a imagem
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 
 #Mostra a imagem na janela
 cv2.namedWindow("Imagem Original") # define a janela

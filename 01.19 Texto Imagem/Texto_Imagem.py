@@ -1,11 +1,9 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
-imagem = cv2.imread(caminhoImagem)
+imagem = cv2.imread(str(caminhoImagem))
 
 imagemtexto = imagem.copy()
 # desenha um texto na imagem

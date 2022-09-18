@@ -1,12 +1,10 @@
 import cv2
-import sys
 from pathlib import Path
 import numpy as np
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\planet_glow.jpg'
+caminhoImagem = Path('Anexos, Imagens e Videos/planet_glow.jpg')
 
-planets = cv2.imread(caminhoImagem)
+planets = cv2.imread(str(caminhoImagem))
 gray_img = cv2.cvtColor(planets, cv2.COLOR_BGR2GRAY)
 gray_img = cv2.medianBlur(gray_img, 5)
 

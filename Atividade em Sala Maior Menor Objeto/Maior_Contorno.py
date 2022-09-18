@@ -1,11 +1,9 @@
 import cv2 as cv
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos/bottom-shape-coloring-page.jpg')
 
-src = cv.imread(caminhoImagem + "bottom-shape-coloring-page.jpg")
+src = cv.imread(str(caminhoImagem))
 hsv_imagem = cv.cvtColor(src, cv.COLOR_BGR2HSV)
 
 hsv_threshold = cv.inRange(hsv_imagem, (17,69,147), (32,189,221))
@@ -52,4 +50,4 @@ cv.rectangle(src, bounding_rect1,  (0,255,255), 2, 8, 0)
 cv.rectangle(src, bounding_rect2,  (0,0,255), 2, 8, 0)
 cv.namedWindow( "Display window", cv.WINDOW_AUTOSIZE )
 cv.imshow( "Display window", src )
-cv.waitKey(0)
+cv.waitKey()

@@ -1,10 +1,8 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos/20211029_105654.jpg')
 
 def onTrackbarChange(max_slider):
     cimg = np.copy(img)
@@ -15,8 +13,6 @@ def onTrackbarChange(max_slider):
     # Detect circles using HoughCircles transform
     circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, cimg.shape[0]/64, param1=p1, param2=p2, minRadius=65, maxRadius=100)
     imgMoedas = np.ndarray(gray.shape[:2],np.uint8)
-
-
 
     # If at least 1 circle is detected
     if circles is not None:
@@ -60,7 +56,7 @@ def onTrackbarChange(max_slider):
 
 if __name__ == "__main__":
     # Read image
-    img = cv2.imread(caminhoImagem + '20211029_105654.jpg', 1)
+    img = cv2.imread(str(caminhoImagem), 1)
 
     # Convert to gray-scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

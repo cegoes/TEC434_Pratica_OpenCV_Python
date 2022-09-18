@@ -1,10 +1,8 @@
 import cv2 as cv
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Ground_Truth\\'
+caminhoImagem = Path('Anexos, Imagens e Videos/Ground_Truth')
 
 def fillHoles(src):
     contours,hierarchy = cv.findContours(src, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
@@ -22,9 +20,9 @@ def main():
     cv.namedWindow(strImagem, cv.WINDOW_GUI_EXPANDED)
     cv.namedWindow(strGround, cv.WINDOW_GUI_EXPANDED)
     cv.namedWindow(strResult, cv.WINDOW_GUI_EXPANDED)
-    npImagem = cv.imread(caminhoImagem + '01.jpg',cv.IMREAD_GRAYSCALE)
+    npImagem = cv.imread(str(caminhoImagem / '01.jpg'),cv.IMREAD_GRAYSCALE)
     if (npImagem is None): print('Erro na abertura da imagem!'); return
-    npGround = cv.imread(caminhoImagem + 'gt01.png',cv.IMREAD_GRAYSCALE)
+    npGround = cv.imread(str(caminhoImagem / 'gt01.png'),cv.IMREAD_GRAYSCALE)
     if (npImagem is None): print('Erro na abertura do ground truth!'); return
     cv.imshow(strImagem, npImagem)
     cv.imshow(strGround, npGround)

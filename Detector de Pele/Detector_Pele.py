@@ -5,13 +5,13 @@ import sys
 from pathlib import Path
 
 path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\pessoas-racas.jpg'
+caminhoImagem = Path('Anexos, Imagens e Videos/pessoas-racas.jpg')
 
 # minRange for min skin color Rnage
 # maxRange for maximum skin color Range
 minRange = np.array([0,133,77],np.uint8)
 maxRange = np.array([235,173,127],np.uint8)
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 
 # change our image bgr to ycr using cvtcolor() method 
 YCRimage = cv2.cvtColor(image,cv2.COLOR_BGR2YCR_CB)

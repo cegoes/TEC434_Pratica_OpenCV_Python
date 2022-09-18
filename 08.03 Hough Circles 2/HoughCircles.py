@@ -1,10 +1,8 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 def onTrackbarChange(max_slider):
     cimg = np.copy(img)
@@ -36,7 +34,7 @@ def onTrackbarChange(max_slider):
 
 if __name__ == "__main__":
     # Read image
-    img = cv2.imread(caminhoImagem + 'brown-eyes.jpg', 1)
+    img = cv2.imread(str(caminhoImagem / 'brown-eyes.jpg'), 1)
 
     # Convert to gray-scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

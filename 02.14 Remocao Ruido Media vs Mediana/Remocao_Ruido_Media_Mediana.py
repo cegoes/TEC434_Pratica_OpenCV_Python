@@ -1,12 +1,10 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 #Carrega a imagem
-imagem = cv2.imread(caminhoImagem + 'len_std_noise.png')
+imagem = cv2.imread(str(caminhoImagem / 'len_std_noise.png'))
 cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', imagem)
 

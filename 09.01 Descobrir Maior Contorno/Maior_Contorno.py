@@ -1,11 +1,9 @@
 import cv2 as cv
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
-src = cv.imread(caminhoImagem + "shape.jpg")
+src = cv.imread(str(caminhoImagem / "shape.jpg"))
 gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
 _, gray = cv.threshold(gray,200, 255, cv.THRESH_BINARY_INV) #Threshold the gray
 cv.imshow("gray", gray)
@@ -33,5 +31,5 @@ color = (255,0,255)
 cv.drawContours( src, contours, largest_contour_index, color, cv.FILLED, 8)
 cv.rectangle(src, bounding_rect,  (0,0,255), 2, 8, 0)
 cv.namedWindow( "Display window", cv.WINDOW_AUTOSIZE )
-cv.imshow( "Display window", src )
-cv.waitKey(0)
+cv.imshow("Display window", src)
+cv.waitKey()

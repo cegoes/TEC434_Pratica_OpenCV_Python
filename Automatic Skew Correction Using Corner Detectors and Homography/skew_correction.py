@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
+
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 def shi_tomashi(image):
     """
@@ -29,7 +32,6 @@ def shi_tomashi(image):
     plt.show()
     return corners
 
-
 def get_destination_points(corners):
     """
     -Get destination points from corners of warped images
@@ -41,7 +43,6 @@ def get_destination_points(corners):
         height: int
         width: int
     """
-
     w1 = np.sqrt((corners[0][0] - corners[1][0]) ** 2 + (corners[0][1] - corners[1][1]) ** 2)
     w2 = np.sqrt((corners[2][0] - corners[3][0]) ** 2 + (corners[2][1] - corners[3][1]) ** 2)
     w = max(int(w1), int(w2))
@@ -98,7 +99,7 @@ def example_one():
     Skew correction using homography and corner detection using Shi-Tomashi corner detector
     Returns: None
     """
-    image = cv2.imread('.\\Anexos, Imagens e Videos\\example_1.png')
+    image = cv2.imread(str(caminhoImagem / 'example_1.png'))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     plt.imshow(image)
     plt.title('Original Image')
@@ -198,7 +199,8 @@ def example_two():
     Skew correction using homography and corner detection using contour points
     Returns: None
     """
-    image = cv2.imread('.\\Anexos, Imagens e Videos\\example_2.jpg')
+    caminhoImagem = Path
+    image = cv2.imread(str(caminhoImagem / 'example_2.jpg'))
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     plt.imshow(image)
     plt.title('Original Image')

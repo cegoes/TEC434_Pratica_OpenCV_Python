@@ -1,16 +1,13 @@
 import scipy.spatial.distance as dist
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\brown-eyes.jpg'
-
+caminhoImagem = Path('Anexos, Imagens e Videos/brown-eyes.jpg')
 # Coordenadas em (colunas, linhas) a serem mensuradas
 a = (148, 127)
 b = (469, 126)
 
-imagem = cv2.imread(caminhoImagem)
+imagem = cv2.imread(str(caminhoImagem))
 
 # Desenha uma linha entre as coordenadas
 cv2.line(imagem, a, b, (0,255,255), 2)

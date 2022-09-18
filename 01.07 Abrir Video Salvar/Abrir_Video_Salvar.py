@@ -1,11 +1,9 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoVideo = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+diretorioVideo = Path('Anexos, Imagens e Videos/')
 
-video = cv2.VideoCapture(caminhoVideo + 'Megamind.avi')
+video = cv2.VideoCapture(str(diretorioVideo / 'Megamind.avi'))
 
 if not video.isOpened():
     print('O vídeo não foi encontrado...')
@@ -24,7 +22,7 @@ print('HEIGHT:' + str(frame_height))
 
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-videoGravar = cv2.VideoWriter(caminhoVideo + 'Megamind_Gravado.avi', fourcc, fps, (int(frame_width),  int(frame_height)), True)
+videoGravar = cv2.VideoWriter(str(diretorioVideo / 'Megamind_Gravado.avi'), fourcc, fps, (int(frame_width),  int(frame_height)), True)
 #VideoWriter video ("MyVideo.avi", -1, 30, frameSize, true); //initialize the VideoWriter object
 
 while video.isOpened():

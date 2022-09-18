@@ -1,12 +1,10 @@
 import cv2
-import sys
 import numpy as np
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\tennis.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/tennis.png')
 
-imagem = cv2.imread(caminhoImagem)
+imagem = cv2.imread(str(caminhoImagem))
 
 cv2.namedWindow('Imagem Entrada',cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem Entrada', imagem)

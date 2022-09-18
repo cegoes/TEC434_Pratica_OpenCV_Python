@@ -1,13 +1,11 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 #Carrega a imagem
-image = cv2.imread(caminhoImagem + 'Fig0305(a)(DFT_no_log).tif')
+image = cv2.imread(str(caminhoImagem / 'Fig0305(a)(DFT_no_log).tif'))
 cv2.imshow('Imagem original', image)
 
 fg = np.float32(image)

@@ -1,17 +1,15 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 #Carrega a imagem
-image_a = cv2.imread(caminhoImagem + 'A.png')
+image_a = cv2.imread(str(caminhoImagem / 'A.png'))
 cv2.namedWindow('Imagem original A', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original A', image_a)
 
 #Carrega a imagem
-image_b = cv2.imread(caminhoImagem + 'B.png')
+image_b = cv2.imread(str(caminhoImagem / 'B.png'))
 cv2.namedWindow('Imagem original B', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original B', image_b)
 

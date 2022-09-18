@@ -1,18 +1,19 @@
 import cv2
 import numpy as np
 import pyglet
+from pathlib import Path
 
 # Necessário ter instalado o pyglet. Instalar com:
 #   pip install pyglet
 # No Windows instalar: https://avbin.github.io/AVbin/Download.html
 # No Linux instalar: sudo apt-get install libavbin-dev libavbin0
 
-filename = ".\\Anexos, Imagens e Videos\\Harry_Potter_Theme_Song_Hedwigs_Theme.mp3"
+filename = Path("Anexos, Imagens e Videos/Harry_Potter_Theme_Song_Hedwigs_Theme.mp3")
 
 # create a player and queue the song
 player = pyglet.media.Player()
 player.loop = True
-sound = pyglet.media.load(filename)
+sound = pyglet.media.load(str(filename))
 player.queue(sound)
 # keep playing for as long as the app is running (or you tell it to stop):
 player.play()

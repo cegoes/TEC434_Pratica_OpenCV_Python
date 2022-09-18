@@ -1,17 +1,15 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 #Carrega a imagem
-original = cv2.imread(caminhoImagem + 'len_std.png')
+original = cv2.imread(str(caminhoImagem / 'len_std.png'))
 cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', original)
 
 #mascara
-mascara = cv2.imread(caminhoImagem + 'len_mascara.png')
+mascara = cv2.imread(str(caminhoImagem / 'len_mascara.png'))
 cv2.namedWindow('Imagem máscara', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem máscara', mascara)
 

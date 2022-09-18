@@ -2,9 +2,8 @@
 
 # import the necessary packages
 import numpy as np
-import imutils
 import cv2
-import sys
+import imutils
 from pathlib import Path
 import numpy as np
 
@@ -15,12 +14,11 @@ def is_contour_bad(c):
 	# the contour is 'bad' if it is not a rectangle
 	return not len(approx) == 4
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\shapes.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/shapes.png')
 
 # load the shapes image, convert it to grayscale, and edge edges in
 # the image
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 edged = cv2.Canny(gray, 50, 100)
 cv2.imshow("Original", image)

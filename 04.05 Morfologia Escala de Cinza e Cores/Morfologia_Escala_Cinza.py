@@ -1,10 +1,8 @@
 import cv2 as cv
 import argparse
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\1_wIXlvBeAFtNVgJd49VObgQ.png'
+caminhoImagem = str(Path('Anexos, Imagens e Videos/1_wIXlvBeAFtNVgJd49VObgQ.png'))
 
 src = None
 erosion_size = 0
@@ -29,7 +27,6 @@ def main(image):
     cv.createTrackbar(title_trackbar_kernel_size, title_dilation_window, 0, max_kernel_size, dilatation)
     erosion(0)
     dilatation(0)
-    cv.waitKey()
     
 # optional mapping of values with morphological shapes
 def morph_shape(val):
@@ -62,3 +59,5 @@ if __name__ == "__main__":
     parser.add_argument('--input', help='Path to input image.', default=caminhoImagem)
     args = parser.parse_args()
     main(args.input)
+    cv.waitKey()
+    cv.destroyAllWindows()

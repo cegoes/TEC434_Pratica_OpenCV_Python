@@ -8,14 +8,12 @@ Zhang-Suen Thinning Algorithm for skeletonization.
 """
 import cv2 as cv
 import matplotlib.pyplot as plt
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\test_image.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/test_image.png')
 
 "load image data"
-Img_Original =  cv.imread(caminhoImagem, cv.IMREAD_GRAYSCALE)      # Gray image, rgb images need pre-conversion
+Img_Original =  cv.imread(str(caminhoImagem), cv.IMREAD_GRAYSCALE)      # Gray image, rgb images need pre-conversion
 
 "Convert gray images to binary images using Otsu's method"
 ret, Otsu_Threshold = cv.threshold(Img_Original,128,1,cv.THRESH_OTSU)   

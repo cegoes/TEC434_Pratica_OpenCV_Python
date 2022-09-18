@@ -1,9 +1,7 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
+caminhoImagem = 'Anexos, Imagens e Videos/len_std.png'
 
 image = cv2.imread(caminhoImagem)
 

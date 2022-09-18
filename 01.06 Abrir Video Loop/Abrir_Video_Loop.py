@@ -1,11 +1,9 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Megamind.avi'
+caminhoImagem = Path('Anexos, Imagens e Videos/Megamind.avi')
 
-mostraVideo = cv2.VideoCapture(caminhoImagem)
+mostraVideo = cv2.VideoCapture(str(caminhoImagem))
 
 #Guarda os frames por segundo do vídeo
 fps = int(1000 / mostraVideo.get(cv2.CAP_PROP_FPS))

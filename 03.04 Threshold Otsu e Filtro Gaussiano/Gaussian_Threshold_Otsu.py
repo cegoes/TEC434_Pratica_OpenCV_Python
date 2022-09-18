@@ -1,12 +1,10 @@
 import cv2 as cv
 from matplotlib import pyplot as plt
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\bimodal_hsv_noise.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/bimodal_hsv_noise.png')
 
-img = cv.imread(caminhoImagem,0)
+img = cv.imread(str(caminhoImagem),0)
 # global thresholding
 ret1,th1 = cv.threshold(img,127,255,cv.THRESH_BINARY)
 # Otsu's thresholding

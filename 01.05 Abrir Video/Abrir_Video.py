@@ -1,19 +1,17 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Road traffic.mp4'
+caminhoVideo = Path('Anexos, Imagens e Videos/Road traffic.mp4')
 
-mostraVideo = cv2.VideoCapture(caminhoImagem)
+videoCarregado = cv2.VideoCapture(str(caminhoVideo))
 
 #Guarda os frames por segundo do vídeo
-fps = int(1000 / mostraVideo.get(cv2.CAP_PROP_FPS))
+fps = int(1000 / videoCarregado.get(cv2.CAP_PROP_FPS))
 
 cv2.namedWindow('Abrir Vídeo', cv2.WINDOW_GUI_EXPANDED )
 
-while mostraVideo.isOpened():
-    sucess, frame = mostraVideo.read()  
+while videoCarregado.isOpened():
+    sucess, frame = videoCarregado.read()  
     # if video finished or no Video Input
     if not sucess:
         break  
@@ -24,4 +22,4 @@ while mostraVideo.isOpened():
         break
 
 cv2.destroyAllWindows()
-mostraVideo.release()
+videoCarregado.release()

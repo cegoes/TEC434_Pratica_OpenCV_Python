@@ -1,17 +1,15 @@
 import cv2
 from matplotlib import pyplot as plt
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoDiretorio = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoDiretorio = Path('Anexos, Imagens e Videos')
 
 nomeImagens = ['ImagemAltoContraste.tif','ImagemBaixoContraste.tif','ImagemClara.tif','ImagemEscura.tif']
 nomeJanelas = ['Alto contraste','Baixo contraste','Imagem clara','Imagem escura']
 imagem = []
 
 for n in range(0,len(nomeJanelas)):
-    imagem.append(cv2.imread(caminhoDiretorio + nomeImagens[n]))
+    imagem.append(cv2.imread(str(caminhoDiretorio / nomeImagens[n])))
 
 # Calculate histogram with mask and without mask
 # Check third argument for mask

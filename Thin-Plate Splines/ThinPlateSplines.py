@@ -1,14 +1,12 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
 if __name__ == "__main__":
 
-    img = cv2.imread(caminhoImagem)
+    img = cv2.imread(str(caminhoImagem))
 
     tps = cv2.createThinPlateSplineShapeTransformer()
     rows, cols, _ = img.shape

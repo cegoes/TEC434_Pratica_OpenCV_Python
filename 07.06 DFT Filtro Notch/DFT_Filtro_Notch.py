@@ -1,6 +1,5 @@
 import cv2 as cv
 import numpy as np
-import sys
 from pathlib import Path
 
 def computeDFT(image):
@@ -29,7 +28,7 @@ def shift(magI):
     return np.fft.fftshift(magI)
 
 def filtroNotch(complex, caminho):
-    mask = cv.imread(caminho + "\\DFT Filtros\\Clown FFT2.png", cv.IMREAD_GRAYSCALE)
+    mask = cv.imread(str(caminho / "DFT Filtros/Clown FFT2.png"), cv.IMREAD_GRAYSCALE)
 
     if mask is None:
         print('Falha ao abrir a imagem do filtro notch...')
@@ -68,10 +67,9 @@ def updateResult(complex):
     return result
 
 def main():
-    path = Path(sys.path[0])
-    caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos'
+    caminhoImagem = Path('Anexos, Imagens e Videos')
 
-    imagem = cv.imread(caminhoImagem + '\\Clown.jpg', cv.IMREAD_GRAYSCALE)
+    imagem = cv.imread(str(caminhoImagem / 'Clown.jpg'), cv.IMREAD_GRAYSCALE)
     if( imagem is None):
         print('Falha ao abrir a imagem de entrada...')
         exit()
@@ -89,7 +87,7 @@ def main():
     cv.imshow('Espectro Filtro Notch', updateMag(dftImagem))
     cv.imshow('Resultado', updateResult(dftImagem))
 
-    cv.waitKey(0)
+    cv.waitKey()
 
 if __name__ == "__main__":
     main()

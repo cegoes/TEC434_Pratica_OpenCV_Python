@@ -1,13 +1,11 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\regionfilling.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/regionfilling.png')
 
 #Carrega a imagem
-src = cv2.imread(caminhoImagem, cv2.IMREAD_GRAYSCALE)
+src = cv2.imread(str(caminhoImagem), cv2.IMREAD_GRAYSCALE)
 
 res = cv2.findContours(src, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 contours =  res[-2] # for cv2 v3 and v4+ compatibility

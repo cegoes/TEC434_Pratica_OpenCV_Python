@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-import sys
 from pathlib import Path
 
 kernel_size: int = 0
@@ -122,10 +121,9 @@ def onMouse(event, x, y, _, param):
 
 def main():
     # Step 1 read in the picture
-    path = Path(sys.path[0])
-    caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\Clown.jpg'
-    image = cv2.imread(caminhoImagem, cv2.IMREAD_GRAYSCALE)    
-    cv2.namedWindow('Original Image', cv2.cv2.WINDOW_GUI_EXPANDED)
+    caminhoImagem = Path('Anexos, Imagens e Videos/Clown.jpg')
+    image = cv2.imread(str(caminhoImagem), cv2.IMREAD_GRAYSCALE)    
+    cv2.namedWindow('Original Image', cv2.WINDOW_GUI_EXPANDED)
     cv2.imshow('Original Image',image)
     global complex
     complex = computeDFT(image)

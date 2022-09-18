@@ -1,11 +1,9 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
-imagem = cv2.imread(caminhoImagem)
+imagem = cv2.imread(str(caminhoImagem))
 
 imagemdesenho = imagem.copy()
 cv2.circle(imagemdesenho,(140,140),70,(0,0,255),2)

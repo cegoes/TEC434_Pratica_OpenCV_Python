@@ -1,12 +1,8 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\star.png'
-
-print(caminhoImagem)
-img = cv2.imread(caminhoImagem)
+caminhoImagem = Path('Anexos, Imagens e Videos/star.png')
+img = cv2.imread(str(caminhoImagem))
 
 # convert image to grayscale image
 gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

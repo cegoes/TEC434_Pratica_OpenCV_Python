@@ -1,9 +1,7 @@
 import cv2 as cv
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos/h.png')
 frame_HSV = None
 
 max_value = 255
@@ -81,7 +79,7 @@ def main():
     cv.createTrackbar(low_V_name, window_trackbars , low_V, max_value, on_low_V_thresh_trackbar)
     cv.createTrackbar(high_V_name, window_trackbars , high_V, max_value, on_high_V_thresh_trackbar)
 
-    imagem = cv.imread(caminhoImagem + 'h.png')
+    imagem = cv.imread(str(caminhoImagem))
     if imagem is None:
         print('Imagem não encontrada! Finalizando o programa...')
         exit()

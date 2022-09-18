@@ -32,9 +32,10 @@ Examples:
 
 import numpy as np
 import cv2
-import sys, getopt
+import getopt, sys
+from pathlib import Path
 
-caminhoImagem = '.\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 def blur_edge(img, d=31):
     h, w  = img.shape[:2]
@@ -69,14 +70,14 @@ if __name__ == '__main__':
         fn = args[0]
     except:
         #fn = caminhoImagem + 'Motion_Blur.png'
-        fn = caminhoImagem + 'licenseplate_motion.jpg'
+        fn = str(caminhoImagem / 'licenseplate_motion.jpg')
 
     win = 'deconvolution'
 
     img = cv2.imread(fn, 0)
     if img is None:
         print('Não foi possível abrir a imagem!')
-        sys.exit(1)
+        quit()
 
     img = np.float32(img)/255.0
     cv2.imshow('input', img)

@@ -1,10 +1,8 @@
 import cv2
 import numpy as np
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\'
+caminhoImagem = Path('Anexos, Imagens e Videos')
 
 def onTrackbarChange(max_slider):
 	global img
@@ -40,7 +38,7 @@ def onTrackbarChange(max_slider):
 if __name__ == "__main__":
 	
 	# Read image
-	img = cv2.imread(caminhoImagem +'lanes.jpg')
+	img = cv2.imread(str(caminhoImagem / 'lanes.jpg'))
 	
 	# Create a copy for later usage
 	dst = np.copy(img)

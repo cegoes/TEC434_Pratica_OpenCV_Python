@@ -1,14 +1,12 @@
 import cv2
 import numpy as np
 import random
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\liv.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/liv.png')
 
 # First read in img
-img = cv2.imread(caminhoImagem,cv2.IMREAD_COLOR)
+img = cv2.imread(str(caminhoImagem),cv2.IMREAD_COLOR)
 #img = cv2.resize(img,(180,32))
 cv2.imshow('Original',img)
 # N pair of reference control points

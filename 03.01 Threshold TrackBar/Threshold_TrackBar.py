@@ -1,6 +1,5 @@
 import cv2 as cv
 import numpy as np
-import sys
 from pathlib import Path
 
 # Global variables
@@ -32,11 +31,10 @@ def Threshold_Demo(val):
   cv.imshow( window_name, dst )
 
 if __name__ == '__main__':
-  path = Path(sys.path[0])
-  caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\len_std.png'
+  caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
   # Carrega a imagem
-  src = cv.imread( caminhoImagem )
+  src = cv.imread( str(caminhoImagem) )
 
    # Converte para Cinza
   src_gray = cv.cvtColor( src, cv.COLOR_BGR2GRAY)

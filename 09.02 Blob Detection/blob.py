@@ -1,11 +1,11 @@
-#!/usr/bin/python
-
 # Standard imports
 import cv2
 import numpy as np
+from pathlib import Path
 
 # Read image
-im = cv2.imread('.\\Anexos, Imagens e Videos\\blob.jpg', cv2.IMREAD_GRAYSCALE)
+caminhoImagem = Path('Anexos, Imagens e Videos/blob.jpg')
+im = cv2.imread(str(caminhoImagem), cv2.IMREAD_GRAYSCALE)
 
 # Setup SimpleBlobDetector parameters.
 params = cv2.SimpleBlobDetector_Params()
@@ -37,7 +37,6 @@ if int(ver[0]) < 3 :
 else : 
 	detector = cv2.SimpleBlobDetector_create(params)
 
-
 # Detect blobs.
 keypoints = detector.detect(im)
 
@@ -49,5 +48,5 @@ im_with_keypoints = cv2.drawKeypoints(im, keypoints, np.array([]), (0,0,255), cv
 
 # Show blobs
 cv2.imshow("Keypoints", im_with_keypoints)
-cv2.waitKey(0)
+cv2.waitKey()
 

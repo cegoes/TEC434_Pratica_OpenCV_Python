@@ -2,15 +2,13 @@
 from pyimagesearch.shapedetector import ShapeDetector
 import imutils
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\shapes_and_colors.png'
+caminhoImagem = Path('Anexos, Imagens e Videos/shapes_and_colors.png')
 
 # load the image and resize it to a smaller factor so that
 # the shapes can be approximated better
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 resized = imutils.resize(image, width=300)
 ratio = image.shape[0] / float(resized.shape[0])
 

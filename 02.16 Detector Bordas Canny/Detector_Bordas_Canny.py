@@ -1,11 +1,9 @@
 import cv2
-import sys
 from pathlib import Path
 
-path = Path(sys.path[0])
-caminhoImagem = str(path.parent.absolute()) + '\\Anexos, Imagens e Videos\\pecas_lego.jpg'
+caminhoImagem = Path('Anexos, Imagens e Videos/pecas_lego.jpg')
 
-imagem = cv2.imread(caminhoImagem, cv2.IMREAD_GRAYSCALE)
+imagem = cv2.imread(str(caminhoImagem), cv2.IMREAD_GRAYSCALE)
 
 imagembordas = cv2.Canny(imagem, 30, 150)
 

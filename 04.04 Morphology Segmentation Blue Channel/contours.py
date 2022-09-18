@@ -2,17 +2,17 @@
 
 import numpy as np
 import cv2
+from pathlib import Path
 
-image = cv2.imread('.\\Anexos, Imagens e Videos\\HeLa-I.jpg')
+caminhoImagem = Path('Anexos, Imagens e Videos/HeLa-I.jpg')
+image = cv2.imread(str(caminhoImagem))
 cv2.namedWindow("Main", cv2.WINDOW_NORMAL)
 cv2.imshow("Main", image)
-cv2.waitKey(0)
 
 # Extraction of Blue channel
 b = image[:,:,0]
 cv2.namedWindow("Only Blue Channel", cv2.WINDOW_NORMAL)
 cv2.imshow("Only Blue Channel", b)
-cv2.waitKey(0)
 
 # Callback Function for Trackbar (but do not any work)
 def nothing(x):
@@ -28,32 +28,32 @@ cv2.createTrackbar(TrackbarName, "window", 0, 250, nothing)
 img_threshed = np.zeros(b.shape, np.uint8)
 
 while True:
-  # Get kernel size in trackbar
-  TrackbarPos = cv2.getTrackbarPos(TrackbarName, "window")
-  # Apply dilation
-  limit = TrackbarPos
-  ret,img_threshed = cv2.threshold(b,limit,255,cv2.THRESH_BINARY)
-  # Show in window
-  cv2.imshow("window", img_threshed)
-  ch = cv2.waitKey(27)
-  if ch == 27 or ch == 0x10001b:
-     break
+   # Get kernel size in trackbar
+   TrackbarPos = cv2.getTrackbarPos(TrackbarName, "window")
+   # Apply dilation
+   limit = TrackbarPos
+   ret,img_threshed = cv2.threshold(b,limit,255,cv2.THRESH_BINARY)
+   # Show in window
+   cv2.imshow("window", img_threshed)
 
-# Expanding borders of the objects
-kernel = np.ones((9, 9),np.uint8)
-img_dilated = cv2.dilate(img_threshed, kernel)
-img_dilated = cv2.dilate(img_dilated, kernel)
-kernel = np.ones((11, 11),np.uint8)
-img_dilated = cv2.erode(img_dilated, kernel)
-cv2.namedWindow("Dilatedx2 and Eroded Blue Channel", cv2.WINDOW_NORMAL)
-cv2.imshow("Dilatedx2 and Eroded Blue Channel", img_dilated)
-cv2.waitKey(0)
 
-# Retrieving contours by subtraction base objects from the expanded objects
-img_contours = img_dilated - img_threshed
-cv2.namedWindow("Contours", cv2.WINDOW_NORMAL)
-cv2.imshow("Contours", img_contours)
-cv2.waitKey(0)
+   # Expanding borders of the objects
+   kernel = np.ones((9, 9),np.uint8)
+   img_dilated = cv2.dilate(img_threshed, kernel)
+   img_dilated = cv2.dilate(img_dilated, kernel)
+   kernel = np.ones((11, 11),np.uint8)
+   img_dilated = cv2.erode(img_dilated, kernel)
+   cv2.namedWindow("Dilatedx2 and Eroded Blue Channel", cv2.WINDOW_NORMAL)
+   cv2.imshow("Dilatedx2 and Eroded Blue Channel", img_dilated)
+
+   # Retrieving contours by subtraction base objects from the expanded objects
+   img_contours = img_dilated - img_threshed
+   cv2.namedWindow("Contours", cv2.WINDOW_NORMAL)
+   cv2.imshow("Contours", img_contours)
+
+   ch = cv2.waitKey(27)
+   if ch == 27 or ch == 0x10001b:
+      break
 
 cv2.destroyAllWindows()
 
