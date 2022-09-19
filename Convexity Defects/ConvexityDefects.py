@@ -2,7 +2,6 @@ import cv2
 from pathlib import Path
 
 caminhoImagem = Path('Anexos, Imagens e Videos/star.png')
-
 img = cv2.imread(str(caminhoImagem))
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 ret, thresh = cv2.threshold(img_gray, 127, 255,0)
