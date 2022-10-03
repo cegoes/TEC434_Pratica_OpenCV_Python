@@ -45,16 +45,16 @@ def main():
     #Falso Negativo
     image_fn = cv.bitwise_and(npGround,~image_result)
 
-    taxa_vp = cv.countNonZero(image_vp)*100/cv.countNonZero(npGround)
-    taxa_vn = cv.countNonZero(image_vn)*100/cv.countNonZero(~npGround)
-    taxa_fp = cv.countNonZero(image_fp)*100/cv.countNonZero(~npGround)
-    taxa_fn = cv.countNonZero(image_fn)*100/cv.countNonZero(npGround)
+    taxa_vp = cv.countNonZero(image_vp)/cv.countNonZero(npGround)*100
+    taxa_vn = cv.countNonZero(image_vn)/cv.countNonZero(~npGround)*100
+    taxa_fp = cv.countNonZero(image_fp)/cv.countNonZero(~npGround)*100
+    taxa_fn = cv.countNonZero(image_fn)/cv.countNonZero(npGround)*100
 
     print("----------------------------" )
     print("Verdadeiro Positivo: {:.2f} %".format(taxa_vp)) 
     print("Verdadeiro Negativo: {:.2f} %".format(taxa_vn))
-    print("Falso Positivo: {:.2f} %".format(taxa_fp))
-    print("Falso Negativo: {:.2f} %".format(taxa_fn))
+    print("Falso Positivo:      {:.2f} %".format(taxa_fp))
+    print("Falso Negativo:      {:.2f} %".format(taxa_fn))
 
     cv.waitKey(0)
     cv.destroyAllWindows()

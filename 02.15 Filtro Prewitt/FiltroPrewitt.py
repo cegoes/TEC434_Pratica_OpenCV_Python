@@ -32,5 +32,5 @@ cv2.imshow('Imagem filtro Prewitt Y', prewittY)
 cv2.namedWindow('Imagem filtro Prewitt XY', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem filtro Prewitt XY', prewittXY)
 
-cv2.waitKey(0)
+cv2.waitKey()
 cv2.destroyAllWindows()

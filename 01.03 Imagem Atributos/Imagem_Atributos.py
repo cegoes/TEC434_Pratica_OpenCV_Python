@@ -3,7 +3,7 @@ from pathlib import Path
 
 caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
-image = cv2.imread(caminhoImagem)
+image = cv2.imread(str(caminhoImagem))
 
 (h, w, d) = image.shape
 tipo = image.dtype

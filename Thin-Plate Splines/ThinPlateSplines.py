@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from pathlib import Path
 
-caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
+caminhoImagem = Path('Thin-Plate Splines/len_std.png')
 
 if __name__ == "__main__":
 
@@ -29,7 +29,7 @@ if __name__ == "__main__":
                             [0, rows],
                             [0.25*cols, 0.5*rows]],
                             np.float32)
-
+    
     sourcePoints=sourcePoints.reshape(-1,len(sourcePoints),2)
     targetPoints=targetPoints.reshape(-1,len(targetPoints),2)
 
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     out_img = tps.warpImage(img)
 
     cv2.imshow("Original", img)
-    cv2.imshow("Distorção", out_img)
+    cv2.imshow("Distorcao", out_img)
 
     cv2.waitKey(0)
 

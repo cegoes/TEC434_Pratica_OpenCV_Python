@@ -25,11 +25,11 @@ orig = cv2.imread(str(caminhoImagem))
 warped = cv2.remap(orig, map_x_32, map_y_32, cv2.INTER_CUBIC)
 
 #Mostra a imagem original
-cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
+#cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', orig)
 
 #Mostra a imagem remapeada
-cv2.namedWindow('Imagem remapeada', cv2.WINDOW_GUI_EXPANDED)
+#cv2.namedWindow('Imagem remapeada', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem remapeada', warped)
 
 cv2.waitKey(0)

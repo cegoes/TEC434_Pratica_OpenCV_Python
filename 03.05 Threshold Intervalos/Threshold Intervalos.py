@@ -13,4 +13,4 @@ t_intervalo = cv.inRange(imagem,150,200)
 cv.namedWindow('Threshold intervalo',cv.WINDOW_GUI_EXPANDED)
 cv.imshow('Threshold intervalo', t_intervalo)
 
-cv.waitKey(0)
+cv.waitKey()
