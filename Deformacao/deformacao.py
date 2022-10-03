@@ -1,7 +1,8 @@
 import cv2 as cv
 import numpy as np
+from pathlib import Path
 
-img = cv.imread('9ksVJ.jpg')
+img = cv.imread(str(Path('Deformacao/9ksVJ.jpg')))
 
 right_eye = (215,105)
 radius = 30

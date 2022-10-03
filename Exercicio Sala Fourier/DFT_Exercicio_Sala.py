@@ -51,11 +51,9 @@ img_idf = cv.idft(mask_img)
 img_idf = cv.magnitude(img_idf[:, :, 0], img_idf[:, :, 1])
 
 # Converte a matrix novamente para o tipo unsigned 8bits e ajusta a escala dos pixels
-cv.normalize(img_idf, img_idf, 1, 0, cv.NORM_INF)
-imgidf = np.uint8(img_idf)
+img_idf = np.uint8(cv.normalize(img_idf, None, 0, 255, cv.NORM_MINMAX))
+
 cv.imshow('Input Image',img)
+cv.imshow('OutPut Image',img_idf)
 
-cv.imshow('Imagem Saída',img_idf)
-#cv.imwrite('b.tif',img_idf)
-
-cv.waitKey(0)
+cv.waitKey()
