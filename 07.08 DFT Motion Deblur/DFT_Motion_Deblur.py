@@ -67,14 +67,14 @@ if __name__ == '__main__':
     opts, args = getopt.getopt(sys.argv[1:], '', ['circle', 'angle=', 'd=', 'snr='])
     opts = dict(opts)
     try:
-        fn = args[0]
+        fn = Path(args[0])
     except:
         #fn = caminhoImagem + 'Motion_Blur.png'
-        fn = str(caminhoImagem / 'licenseplate_motion.jpg')
+        fn = Path(caminhoImagem) / 'licenseplate_motion.jpg'
 
     win = 'deconvolution'
-
-    img = cv2.imread(fn, 0)
+    print(str(Path().absolute()))
+    img = cv2.imread(str(fn), 0)
     if img is None:
         print('Não foi possível abrir a imagem!')
         quit()
