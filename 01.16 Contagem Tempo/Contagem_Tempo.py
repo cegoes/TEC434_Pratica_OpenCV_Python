@@ -16,3 +16,4 @@ cv2.imshow('Imagem carregada', imagem)
 print('Tempo de carregamento: ' + str(time) + ' segundos')
 
 cv2.waitKey(0)
+cv2.destroyAllWindows()

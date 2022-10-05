@@ -27,5 +27,5 @@ plt.subplot(247, title = 'Hist. imagem clara'), plt.plot(histClara)
 plt.subplot(248, title = 'Hist. imagem escura'), plt.plot(histEscura)
 plt.show()
 
-cv2.waitKey(0)
+cv2.waitKey()
 cv2.destroyAllWindows()
