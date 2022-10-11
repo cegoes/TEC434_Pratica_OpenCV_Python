@@ -18,7 +18,7 @@ if __name__ == '__main__' :
      # Warp source image to destination based on homography
      im_out = cv.warpPerspective(im_src, h, (im_dst.shape[1],im_dst.shape[0]), borderValue=[255,255,255])
      mask = im_out[:,:,0] < 100
-     cv.imshow("mask Image", np.uint8(mask))
+
      im_out_overlapped = im_dst.copy()
      im_out_overlapped[mask] = [0,0,255]
      # Display images
