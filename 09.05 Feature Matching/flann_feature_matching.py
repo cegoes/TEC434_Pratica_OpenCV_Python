@@ -2,8 +2,8 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 from pathlib import Path
 
-img1 = cv.imread(str(Path('Feature Matching/box.png')),0)          # queryImage
-img2 = cv.imread(str(Path('Feature Matching/box_in_scene.png')),0) # trainImage
+img1 = cv.imread(str(Path('09.05 Feature Matching/box.png')),0)          # queryImage
+img2 = cv.imread(str(Path('09.05 Feature Matching/box_in_scene.png')),0) # trainImage
 
 # Initiate SIFT detector
 sift = cv.SIFT_create()
