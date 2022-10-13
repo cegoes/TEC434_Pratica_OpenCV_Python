@@ -10,15 +10,6 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-caminhoImagem = Path('Anexos, Imagens e Videos/test_image.png')
-
-"load image data"
-Img_Original =  cv.imread(str(caminhoImagem), cv.IMREAD_GRAYSCALE)      # Gray image, rgb images need pre-conversion
-
-"Convert gray images to binary images using Otsu's method"
-ret, Otsu_Threshold = cv.threshold(Img_Original,128,1,cv.THRESH_OTSU)   
-BW_Original = Otsu_Threshold    # must set object region as 1, background region as 0 !
-
 def neighbours(x,y,image):
     "Return 8-neighbours of image point P1(x,y), in a clockwise order"
     img = image
@@ -65,16 +56,24 @@ def zhangSuen(image):
             Image_Thinned[x][y] = 0
     return Image_Thinned
  
-"Apply the algorithm on images"
-BW_Skeleton = zhangSuen(BW_Original)
-# BW_Skeleton = BW_Original
-"Display the results"
-fig, ax = plt.subplots(1, 2)
-ax1, ax2 = ax.ravel()
-ax1.imshow(BW_Original, cmap=plt.cm.gray)
-ax1.set_title('Original binary image')
-ax1.axis('off')
-ax2.imshow(BW_Skeleton, cmap=plt.cm.gray)
-ax2.set_title('Skeleton of the image')
-ax2.axis('off')
-plt.show()
+if __name__ == '__main__':
+
+    caminhoImagem = Path('Anexos, Imagens e Videos/test_image.png')
+    "load image data"
+    Img_Original =  cv.imread(str(caminhoImagem), cv.IMREAD_GRAYSCALE)      # Gray image, rgb images need pre-conversion
+    "Convert gray images to binary images using Otsu's method"
+    ret, Otsu_Threshold = cv.threshold(Img_Original,127,1,cv.THRESH_OTSU)   
+    BW_Original = Otsu_Threshold    # must set object region as 1, background region as 0 !
+    "Apply the algorithm on images"
+    BW_Skeleton = zhangSuen(BW_Original)
+    # BW_Skeleton = BW_Original
+    "Display the results"
+    fig, ax = plt.subplots(1, 2)
+    ax1, ax2 = ax.ravel()
+    ax1.imshow(BW_Original, cmap=plt.cm.gray)
+    ax1.set_title('Original binary image')
+    ax1.axis('off')
+    ax2.imshow(BW_Skeleton, cmap=plt.cm.gray)
+    ax2.set_title('Skeleton of the image')
+    ax2.axis('off')
+    plt.show()
