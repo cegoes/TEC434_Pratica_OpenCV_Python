@@ -1,8 +1,9 @@
 import cv2 as cv
 from pathlib import Path
+import numpy as np
 
 caminhoImagem = Path('Anexos, Imagens e Videos')
-frame_HSV = None
+frame_HSV = np.ndarray
 
 max_value = 255
 max_value_H = 360 // 2
@@ -94,4 +95,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
