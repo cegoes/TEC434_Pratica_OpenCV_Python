@@ -4,7 +4,7 @@ import numpy as np
 from pathlib import Path
 
 DETECTOR = dlib.get_frontal_face_detector()
-PREDICTOR = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
+PREDICTOR = dlib.shape_predictor('11.03 FaceMorph/shape_predictor_68_face_landmarks.dat')
 
 def get_landmarks(im):
 	rects = DETECTOR(im, 1)
@@ -64,8 +64,8 @@ def correct_colours(warped_face_im, body_im,face_scale):
 	
 	return np.clip(0. + body_im_blur + warped_face_im - face_im_blur,0,255)
 
-face_im = cv.imread(str(Path('bush.jpg')))
-body_im = cv.imread(str(Path('obama.jpg')))
+face_im = cv.imread(str(Path('11.03 FaceMorph/bush.jpg')))
+body_im = cv.imread(str(Path('11.03 FaceMorph/obama.jpg')))
 
 face_points = get_landmarks(face_im)
 body_points = get_landmarks(body_im)
@@ -78,6 +78,10 @@ corrected_face_im = correct_colours(warped_face_im, body_im, face_scale)
 
 mask_im = create_mask(body_points, body_im.shape, face_scale)
 combined_im = (corrected_face_im * mask_im + body_im * (1-mask_im))
+
+cv.imshow('Imagem 1', face_im)
+cv.imshow('Imagem 2', body_im)
+
 
 cv.imshow('Final', np.uint8(combined_im))
 cv.waitKey()
