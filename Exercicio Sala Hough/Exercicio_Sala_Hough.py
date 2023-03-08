@@ -3,6 +3,8 @@ import numpy as np
 from pathlib import Path
 
 caminhoImagem = Path('Anexos, Imagens e Videos/20211029_105654.jpg')
+gray = np.ndarray
+img = np.ndarray
 
 def onTrackbarChange(max_slider):
     cimg = np.copy(img)
@@ -39,7 +41,7 @@ def onTrackbarChange(max_slider):
     for i in range(len(contours)):
         #  Descobre a área do contorno
         area = cv2.contourArea(contours[i], False)
-        print(  str(i) + " area  " + str(area) )
+        # print(  str(i) + " area  " + str(area) )
 
         if (area>16000 and area<18000):
             color = (0,0,255)
@@ -64,9 +66,9 @@ if __name__ == "__main__":
     gray = cv2.blur(gray, (9,9))
 
     # Create display windows
-    cv2.namedWindow("Moedas", cv2.WINDOW_GUI_NORMAL)
-    cv2.namedWindow("Image", cv2.WINDOW_GUI_NORMAL)
-    cv2.namedWindow("Imagem Moedas", cv2.WINDOW_GUI_NORMAL)
+    cv2.namedWindow("Moedas", cv2.WINDOW_FREERATIO)
+    cv2.namedWindow("Image", cv2.WINDOW_FREERATIO)
+    cv2.namedWindow("Imagem Moedas", cv2.WINDOW_FREERATIO)
 
     # Trackbar will be used for changing threshold for edge 
     initThresh = 105 
@@ -76,9 +78,11 @@ if __name__ == "__main__":
     cv2.createTrackbar("Threshold", "Image", initThresh, maxThresh, onTrackbarChange)
     onTrackbarChange(initThresh)
     
-    while True:
-        key = cv2.waitKey(1)
-        if key == 27:
-            break
+    #while True:
+    #    key = cv2.waitKey(1)
+    #    if key == 27:
+    #        break
+
+    cv2.waitKey(0)
 
     cv2.destroyAllWindows()

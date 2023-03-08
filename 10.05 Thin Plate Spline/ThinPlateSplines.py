@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from pathlib import Path
 
-caminhoImagem = Path('Thin-Plate Splines/len_std.png')
+caminhoImagem = Path('10.05 Thin Plate Spline/len_std.png')
 
 if __name__ == "__main__":
 

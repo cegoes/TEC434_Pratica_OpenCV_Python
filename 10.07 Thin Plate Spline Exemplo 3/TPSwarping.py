@@ -57,7 +57,12 @@ def thin_plate_transform(x,y,offw,offh,imshape,shift_l=-0.05,shift_r=0.05,num_po
 # the correspondences need at least four points
 Zp = np.array([[217, 39], [204, 95], [174, 223], [648, 402]]) # (x, y) in each row
 Zs = np.array([[283, 54], [166, 101], [198, 250], [666, 372]])
-im = cv2.imread('origin.jpg')
+
+from pathlib import Path
+
+caminhoImagem = Path('10.07 Thin Plate Spline Exemplo 3/origin.jpg')
+
+im = cv2.imread(str(caminhoImagem))
 
 r = 6
 

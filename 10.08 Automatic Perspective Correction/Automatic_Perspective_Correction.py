@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 from pathlib import Path
 
-caminho = Path('Automatic Perspective Correction/kMNcG.jpg')
+caminho = Path('10.08 Automatic Perspective Correction/kMNcG.jpg')
 src = cv.imread(str(caminho))
 thr = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
 ret, thr = cv.threshold( thr, 70, 255, cv.THRESH_BINARY )
