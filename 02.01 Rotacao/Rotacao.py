@@ -13,6 +13,6 @@ rotate_matrix = cv2.getRotationMatrix2D(center=center, angle=45, scale=1)
 translacao = cv2.warpAffine(imagem, rotate_matrix, (rows,cols))
 
 cv2.imshow('Imagem original', imagem)
-cv2.imshow('Imagem rotação', translacao)
+cv2.imshow('Imagem rotacao', translacao)
 
 cv2.waitKey(0)
