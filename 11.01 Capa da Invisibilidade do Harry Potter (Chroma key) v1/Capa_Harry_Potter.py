@@ -1,25 +1,24 @@
 import cv2
 import numpy as np
-import pyglet
+from pygame import mixer
 from pathlib import Path
 
 # Necessário ter instalado o pyglet. Instalar com:
 #   pip install pyglet
 # No Windows instalar: https://avbin.github.io/AVbin/Download.html
-# No Linux instalar: sudo apt-get install libavbin-dev libavbin0
+# No Linux instalar: sudo apt install gstreamer1.0-opencv
 
 filename =  Path('Anexos, Imagens e Videos')
 
-# create a player and queue the song
-player = pyglet.media.Player()
-player.loop = True
-sound = pyglet.media.load(str(filename / 'Harry_Potter_Theme_Song_Hedwigs_Theme.mp3'))
-player.queue(sound)
-# keep playing for as long as the app is running (or you tell it to stop):
-player.play()
+# create a mixer and queue the song
+mixer.init()
+mixer.music.load(str(filename / 'Harry_Potter_Theme_Song_Hedwigs_Theme.mp3'))
+mixer.music.play()
 
 #  Create a VideoCapture object and open the input file
 videoPlayer = cv2.VideoCapture(str(filename / 'Input.mp4'))
+if not videoPlayer.isOpened():
+    print('Falha na abertura do vídeo...')
 
 # Declarar as variáveis fora do looping faz a execução ser mais rápida!
 background = np.array
@@ -32,16 +31,17 @@ mascara = np.array
 final_output = np.array
 kernel = np.ones((3,3),np.uint8)
 
-sucess, frame = videoPlayer.read()
+sucess = True
+frame = np.ndarray
+print ('Capturando o background...')
 
 while (sucess):
-    print ('Camera inicializada...')
-    print ('Capturando o background...')
-    for i in range(60):
-        sucess, frame = videoPlayer.read()
+    sucess, frame = videoPlayer.read()
+    if sucess == True:
         background = frame
-    print ('Imagem do background capturada...')
-    break
+        print ('Imagem do background capturada...')
+        break
+
 cv2.namedWindow("Capa da Invisibilidade.", cv2.WINDOW_FREERATIO)
 
 #low_blue = np.array([94, 80, 2])
@@ -58,12 +58,15 @@ tempoFrame =  1 / (videoPlayer.get(cv2.CAP_PROP_FPS))
 
 espera = 0
 tecla = 0
+tempoinicio = 0
+final = 0 
 
 while sucess and tecla != 27:
     tempoinicio = cv2.getTickCount()
     sucess, frame = videoPlayer.read()    
 
     if (sucess == False):
+        print('Terminou o vídeo...')
         break
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -103,6 +106,7 @@ while sucess and tecla != 27:
 
 # When everything done, release the video capture object
 videoPlayer.release()
+mixer.quit()
 
 # Closes all the frames
 cv2.destroyAllWindows()

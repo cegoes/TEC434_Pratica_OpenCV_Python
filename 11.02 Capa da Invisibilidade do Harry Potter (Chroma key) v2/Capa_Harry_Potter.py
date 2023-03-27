@@ -1,38 +1,41 @@
 import cv2
 import numpy as np
-import pyglet
+from pygame import mixer
 from pathlib import Path
 
 # Necessário ter instalado o pyglet. Instalar com:
 #   pip install pyglet
 # No Windows instalar: https://avbin.github.io/AVbin/Download.html
-# No Linux instalar: sudo apt-get install libavbin-dev libavbin0
+# No Linux instalar: sudo apt install gstreamer1.0-opencv
 
 filename = Path("Anexos, Imagens e Videos/Harry_Potter_Theme_Song_Hedwigs_Theme.mp3")
 
-# create a player and queue the song
-player = pyglet.media.Player()
-player.loop = True
-sound = pyglet.media.load(str(filename))
-player.queue(sound)
-# keep playing for as long as the app is running (or you tell it to stop):
-player.play()
+# create a mixer and queue the song
+mixer.init()
+mixer.music.load(str(filename))
+mixer.music.play()
 
 #  Create a VideoCapture object and open the input file
+print ('Tentando iniciar a camera...')
 cameraCapture = cv2.VideoCapture(0)
 
-background = np.ndarray
+if cameraCapture.isOpened()==False:
+    print ('Falha na inicialização da camera...')
+    exit(1)
 
-while (cv2.waitKey != 27):
+background = np.ndarray
+frame = np.ndarray
+contador = 0
+
+while (cv2.waitKey != 27) and (cameraCapture.isOpened()):
+
     sucess, frame = cameraCapture.read()
-    if (sucess==True):
-        print ('Camera inicializada...')
-        print ('Capturando o background...')
-        for i in range(120):
-            sucess, frame = cameraCapture.read()
+    if (frame is not(None)) and (sucess == True):
+        if contador > 120:
             background = frame
-        print ('Imagem do background capturada...')
-        break
+            print ('Imagem do background capturada...')
+            break
+    contador = contador + 1
 
 cv2.namedWindow("Capa da Invisibilidade.", cv2.WINDOW_FREERATIO)
 
@@ -47,10 +50,13 @@ high_red1 = np.array([10, 255, 255])
 low_red2 = np.array([170, 120, 70])
 high_red2 = np.array([180, 255, 255])
 
+sucess = True
+
 while sucess and cv2.waitKey(1) != 27:
     sucess, frame = cameraCapture.read()    
 
     if (sucess == False):
+        print('Falha na captura do frame...')
         break
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)

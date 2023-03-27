@@ -28,7 +28,7 @@ intensidade = \
     [46,51,55,58,60,61,61,65,65,64,64,64,64,64,63,62,63,62,60,59,56,55,51,52,53,50,52,49,45,42,42,41],
     [40,46,51,53,55,57,57,59,62,63,62,62,60,59,60,57,59,56,55,53,52,52,52,53,52,47,47,46,45,42,38,35]]
 
-imagem = np.array(intensidade, dtype=np.int8)
+imagem = np.array(intensidade).astype(dtype=np.int8)
 
 cv2.imshow('Imagem,carregada',imagem)
 
