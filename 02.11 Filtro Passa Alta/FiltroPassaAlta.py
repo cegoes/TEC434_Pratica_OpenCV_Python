@@ -5,7 +5,7 @@ from pathlib import Path
 caminhoImagem = Path('Anexos, Imagens e Videos/len_std.png')
 
 #Carrega a imagem
-image = cv2.imread(str(caminhoImagem))
+image = cv2.imread(str(caminhoImagem),0)
 cv2.namedWindow('Imagem original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem original', image)
 

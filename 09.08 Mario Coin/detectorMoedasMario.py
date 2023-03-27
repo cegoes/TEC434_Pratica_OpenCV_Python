@@ -2,10 +2,10 @@ import cv2 as cv
 import numpy as np
 from pathlib import Path
 
-print(Path().absolute())
-img = cv.imread('Mario Coin/res_mario.jpg')
+caminhoImagens = Path("09.08 Mario Coin")
+img = cv.imread(str(caminhoImagens / 'res_mario.jpg'))
 img_gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-template = cv.imread('Mario Coin/coin.jpg',cv.IMREAD_GRAYSCALE)
+template = cv.imread(str(caminhoImagens / 'coin.jpg'),cv.IMREAD_GRAYSCALE)
 w, h = template.shape[::-1]
 res = cv.matchTemplate(img_gray,template,cv.TM_CCOEFF_NORMED)
 threshold = 0.8
