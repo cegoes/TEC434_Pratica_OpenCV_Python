@@ -5,11 +5,11 @@ from pathlib import Path
 if __name__ == '__main__' :
 
      # Read destination image.
-     im_dst = cv.imread(str(Path('Perspective Homography/KkQ9B.jpg')))
+     im_dst = cv.imread(str(Path('10.02 Perspective Homography/KkQ9B.jpg')))
      pts_dst = np.array([[314, 107], [693, 107], [903, 493],[311, 491]])
 
      # Read source image.
-     im_src = cv.imread(str(Path('Perspective Homography/pitch.jpg')))
+     im_src = cv.imread(str(Path('10.02 Perspective Homography/pitch.jpg')))
      pts_src = np.array([[487, 81],[575, 81],[575, 297],[487, 297]])
 
      # Calculate Homography
