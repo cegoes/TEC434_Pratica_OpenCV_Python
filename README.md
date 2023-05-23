@@ -1,6 +1,6 @@
-<a href="https://uefs.br"<h1>Universidade Estadual de Feira de Santana.</h1></a>
+<h1><a href="https://uefs.br">Universidade Estadual de Feira de Santana</a></h1>
 
-<h>Departamento de Ciências Exatas.</h>
+<h>Departamento de Ciências Exatas</h>
 
 <p>TEC434 - Computação Visual.</p>
 
