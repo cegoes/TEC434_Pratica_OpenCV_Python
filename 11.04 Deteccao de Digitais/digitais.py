@@ -3,7 +3,8 @@ from pathlib import Path
 
 def find_best_match(imagemEntrada, pathComparacaoC):
     # Cria o detector SIFT
-    sift = cv2.xfeatures2d.SIFT_create()
+    #sift = cv2.xfea.SIFT_create()
+    sift = cv2.SIFT_create()
     # Encontra os pontos-chave e descritores com SIFT
     kp1, des1 = sift.detectAndCompute(imagemEntrada,None)
 
@@ -30,7 +31,7 @@ def find_best_match(imagemEntrada, pathComparacaoC):
             if m.distance < 0.8*n.distance:
                 good_matches_count += 1
                 match_points.append(m)
-
+        
         if good_matches_count > best_match_count:
             best_match_count = good_matches_count
             best_match_image_path = image_path
