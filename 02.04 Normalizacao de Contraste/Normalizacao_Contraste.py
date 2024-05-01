@@ -3,7 +3,7 @@ from pathlib import Path
 
 caminhoImagem = Path('Anexos, Imagens e Videos/Fig0310(b).tif')
 
-imagem = cv2.imread(str(caminhoImagem))
+imagem = cv2.imread(str(caminhoImagem),cv2.IMREAD_GRAYSCALE)
 
 cv2.namedWindow('Imagem Original', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Imagem Original', imagem)
@@ -14,5 +14,3 @@ cv2.namedWindow('Contraste normalizado', cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow('Contraste normalizado', normalizado)
 
 cv2.waitKey(0)
-
-
