@@ -1,11 +1,13 @@
 import cv2
 from pathlib import Path
 
+# Armazena o tempo de início
 e1 = cv2.getTickCount()
 
 caminhoImagem = Path('Anexos, Imagens e Videos/a_vm1125.png')
 imagem = cv2.imread(str(caminhoImagem))
 
+# Armazena o tempo de término
 e2 = cv2.getTickCount()
 
 time = (e2 - e1) / cv2.getTickFrequency()

@@ -7,9 +7,7 @@ image = cv2.imread(str(caminhoImagem))
 
 cv2.namedWindow("Imagem original",cv2.WINDOW_GUI_EXPANDED)
 cv2.imshow("Imagem original",image)
-
 elem1 = cv2.getStructuringElement( cv2.MORPH_CROSS, ( 3, 3 ) ) # Elemento estruturante
-
 dilatacao = cv2.morphologyEx(image,cv2.MORPH_DILATE ,elem1)
 
 erosao = cv2.morphologyEx(image,cv2.MORPH_ERODE,elem1)
