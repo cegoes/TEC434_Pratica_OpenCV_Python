@@ -39,6 +39,8 @@ if __name__ == "__main__":
     # Convert to gray-scale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+    gray = cv2.blur(gray, (5,5))
+
     # Create display windows
     cv2.namedWindow("Edges")
     cv2.namedWindow("Image")
